@@ -1,0 +1,394 @@
+/* ==========================================================================
+   1. VARIÁVEIS GLOBAIS & DESIGN TOKENS
+   ========================================================================== */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary-color: #0f172a;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-color: #334155;
+  --text-heading: #0f172a;
+  --border-color: #e2e8f0;
+  
+  --success-color: #16a34a;
+  --error-color: #dc2626;
+  --error-bg: #fef2f2;
+  
+  --radius: 8px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* ==========================================================================
+   2. RESET E ESTILOS BASE
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+hr.divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+h1, h2, h3 {
+  color: var(--text-heading);
+  margin-bottom: 0.5rem;
+}
+
+.section-desc {
+  margin-bottom: 1.5rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   3. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+.main-header {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.main-header h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #eff6ff;
+  color: var(--primary-color);
+}
+
+/* ==========================================================================
+   4. CONTEÚDO PRINCIPAL (#app)
+   ========================================================================== */
+main#app {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 350px;
+}
+
+section {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   5. BOTÕES
+   ========================================================================== */
+.btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: #0284c7;
+}
+
+.btn-secondary:hover {
+  background-color: #0369a1;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   6. HERO SECTION & CARDS DE PROJETOS
+   ========================================================================== */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 250px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-content p {
+  margin-bottom: 1.25rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow);
+}
+
+.project-img-wrapper {
+  position: relative;
+  height: 160px;
+  width: 100%;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.project-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   7. FORMULÁRIOS & VALIDAÇÃO
+   ========================================================================== */
+.form-header {
+  margin-bottom: 1.5rem;
+}
+
+.custom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: var(--text-heading);
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+input.input-erro {
+  border-color: var(--error-color) !important;
+  background-color: var(--error-bg);
+}
+
+input.input-sucesso {
+  border-color: var(--success-color) !important;
+}
+
+.msg-erro {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   8. TABELA DE DADOS
+   ========================================================================== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.data-table th, 
+.data-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f1f5f9;
+  color: var(--text-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.empty-msg {
+  font-style: italic;
+  color: #94a3b8;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   9. RESPONSIVIDADE
+   ========================================================================== */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  
+  .main-header {
+    padding: 1rem;
+  }
+
+  main#app {
+    padding: 1.25rem;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .data-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
